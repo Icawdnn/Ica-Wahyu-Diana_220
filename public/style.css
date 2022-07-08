@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  background: #171c24;
+  position: fixed;
+  width: 100%;
+}
+.wrapper nav{
+  position: relative;
+  display: flex;
+  max-width: calc(100% - 200px);
+  margin: 0 auto;
+  height: 70px;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .content{
+  display: flex;
+  align-items: center;
+}
+nav .content .links{
+  margin-left: 80px;
+  display: flex;
+}
+.content .logo a{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+.content .links li{
+  list-style: none;
+  line-height: 70px;
+}
+.content .links li a,
+.content .links li label{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 9px 17px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.content .links li label{
+  display: none;
+}
+.content .links li a:hover,
+.content .links li label:hover{
+  background: #323c4e;
+}
+.wrapper .search-icon,
+.wrapper .menu-icon{
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 70px;
+  width: 70px;
+  text-align: center;
+}
+.wrapper .menu-icon{
+  display: none;
+}
+.wrapper #show-search:checked ~ .search-icon i::before{
+  content: "\f00d";
+}
+
+.wrapper .search-box{
+  position: absolute;
+  height: 100%;
+  max-width: calc(100% - 50px);
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.wrapper #show-search:checked ~ .search-box{
+  opacity: 1;
+  pointer-events: auto;
+}
+.search-box input{
+  width: 100%;
+  height: 100%;
+  border: 10px;
+  outline: none;
+  font-size: 10px;
+  color: #fff;
+  background: #171c24;
+  padding: 0 100px 0 10px;
+}
+.search-box input::placeholder{
+  color: #f2f2f2;
+}
+.search-box .go-icon{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 60px;
+  width: 70px;
+  background: #171c24;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+.wrapper input[type="checkbox"]{
+  display: none;
+}
+
+/* Dropdown Menu code start */
+.content .links ul{
+  position: absolute;
+  background: #171c24;
+  top: 80px;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+.content .links li:hover > ul{
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+.content .links ul li a{
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  border-radius: 0px!important;
+}
+.content .links ul ul{
+  position: absolute;
+  top: 0;
+  right: calc(-100% + 8px);
+}
+.content .links ul li{
+  position: relative;
+}
+.content .links ul li:hover ul{
+  top: 0;
+}
+
+/* Responsive code start */
+@media screen and (max-width: 1250px){
+  .wrapper nav{
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  nav .content .links{
+    margin-left: 30px;
+  }
+  .content .links li a{
+    padding: 8px 13px;
+  }
+  .wrapper .search-box{
+    max-width: calc(100% - 100px);
+  }
+  .wrapper .search-box input{
+    padding: 0 100px 0 15px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .wrapper .menu-icon{
+    display: block;
+  }
+  .wrapper #show-menu:checked ~ .menu-icon i::before{
+    content: "\f00d";
+  }
+  nav .content .links{
+    display: block;
+    position: fixed;
+    background: #14181f;
+    height: 100%;
+    width: 100%;
+    top: 70px;
+    left: -100%;
+    margin-left: 0;
+    max-width: 350px;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    transition: all 0.3s ease;
+  }
+  nav #show-menu:checked ~ .content .links{
+    left: 0%;
+  }
+  .content .links li{
+    margin: 15px 20px;
+  }
+  .content .links li a,
+  .content .links li label{
+    line-height: 40px;
+    font-size: 20px;
+    display: block;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .content .links li a.desktop-link{
+    display: none;
+  }
+  /* dropdown responsive code start */
+  .content .links ul,
+  .content .links ul ul{
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    max-height: 0px;
+    overflow: hidden;
+  }
+  .content .links #show-kategori:checked ~ ul{
+    max-height: 100vh;
+  }
+  .content .links ul li{
+    margin: 7px 20px;
+  }
+  .content .links ul li a{
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 5px!important;
+  }
+}
+@media screen and (max-width: 400px){
+  .wrapper nav{
+    padding: 0 10px;
+  }
+  .content .logo a{
+    font-size: 27px;
+  }
+  .wrapper .search-box{
+    max-width: calc(100% - 70px);
+  }
+  .wrapper .search-box .go-icon{
+    width: 30px;
+    right: 0;
+  }
+  .wrapper .search-box input{
+    padding-right: 30px;
+  }
+}
+.dummy-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  z-index: -1;
+  padding: 0 20px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.dummy-text h2{
+  font-size: 45px;
+  margin: 5px 0;
+}
+.meta-post{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+article.posts{
+    width: 80%;
+    height: 100%;
+    padding: 10px 20px;
+    margin-top: 90px;
+    background-color: #fff;
+    margin-top: 90px;
+    float: left;
+}
+img{
+  width: 200px;
+  height: 200px;
+}
+aside.widgets{
+    width: 20%;
+    height: 100%;
+    padding: 10px 20px;
+    margin-top: 90px;
+    background-color: #fff;
+    float: right;
+    position: relative;
+}
+aside.widgets ul{
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+aside.widgets li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.widget-tittle{
+    border-bottom: 4px solid #E74C3C;
+    padding-bottom: 4px;
+}
+body {
+  padding:10px;
+  padding-bottom: 0px;   /* sesuaikan dengan tinggi footer */
+}
+footer{
+  background-color: grey;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  clear: both;
+}
+.Profil{
+  height: 1000px;
+  background-color: grey;
+  margin: center;
+  text-align: center;
+  padding-top: 90px;
+}
+.klinik{
+  height: 1000px;
+  background-color: white;
+  margin: center;
+  text-align: center;
+  padding-top: 90px;
+}
+.jadwal{
+  height: 10n 00px;
+  background-color: white;
+  padding-top: 90px;
+}
+.page{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: grey;
+}
+.page li{
+  margin: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: #ededed;
+}
+.page a li{
+  background-color: #363636;
+  border: 1px solid #303030;
+}
+.page a:hover li{
+  border-color: #E74C3C;
+  color: #E73C2C;
+}
+.page a.active li{
+  background-color: #E74C3C;
+  color: white;
+  border-color: #E72C1C;
+  font-weight: 600;
+  box-shadow: 0 0.5rem 1rem; 
+}
+.concal{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.calculator{
+  height: 500px;
+  padding: 16px;
+  border-radius: 30px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(4,68px);
+  box-shadow: inset 5px 5px 12px white, 5px 5px 12px rgba(0, 0, 0, 0.16);
+}
+input{
+  height: 70px;
+  width: 20px;
+  grid-column: span 4;
+  background-color: white;
+  box-shadow: insert -5px -5px 12px #fff, -5px -5px 12px rgba(0, 0, 0, 0.16);
+  border: none;
+  border-radius: 30px;
+  color: rgb(70, 70, 70);
+  font-size: 50px;
+  text-align: end;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+.button{
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: -5px -5px 12px #fff, 5px 5px 12px rgba(0, 0, 0, 0.16);
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+button:hover{
+  background-color: black;
+  color: white;
+}
+button .hasil{
+  width: 115px;
+  border-radius: 45px;
+  box-shadow: inset 5px 5px 12px white, 5px 5px 12px rgba(0, 0, 0, 0.16);
+  background-color: white;
+}
+
+.formdata{
+  height: 1000px;
+background-color: grey;
+margin: center;
+text-align: center;
+padding-top: 80px;
+}
+
+.hasilinput{
+  height: 1000px;
+background-color: grey;
+margin: center;
+text-align: center;
+padding-top: 80px;
+margin-top: 40px;
+}
+
+.formdata form{
+  font-size: 15;
+  margin-bottom: 2px;
+  margin-left: 3px;
+  width: fit-content;
+}
